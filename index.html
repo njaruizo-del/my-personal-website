@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Niko Jhon Ruizo | Computer Science Student</title>
+  <meta name="description" content="Portfolio of Niko Jhon Ruizo, a Computer Science student learning programming and web development with HTML, CSS, JavaScript and Java.">
+  <meta name="theme-color" content="#101a1d">
+
+  <!-- Adds a "js" class immediately so CSS only hides reveal-on-scroll
+       content when JavaScript is actually available (progressive enhancement). -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="index.css">
+  <script src="index.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="progress" aria-hidden="true"></div>
+
+  <!-- HEADER / NAV -->
+  <header class="site-header" data-header>
+    <div class="site-header__inner">
+      <a class="brand" href="#hero" aria-label="Niko Jhon Ruizo, back to top">Niko Jhon Ruizo</a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
+        <span class="nav-toggle__label">Menu</span>
+        <span class="nav-toggle__icon" aria-hidden="true"></span>
+      </button>
+
+      <nav class="site-nav" id="primary-nav" aria-label="Primary" data-nav>
+        <ul class="site-nav__list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#resume">Resume</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ================================ HERO ================================ -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <h1 class="hero__title" id="hero-title" data-hero-title>
+          <span class="hero__line" data-split>Niko Jhon</span>
+          <span class="hero__line" data-split>Ruizo</span>
+        </h1>
+
+        <div class="hero__intro">
+          <p class="hero__lede">
+            Hi, I'm Niko. I'm a Computer Science student learning programming and web development.
+          </p>
+          <ul class="hero__actions">
+            <li><a class="button button--solid" href="#projects">View projects</a></li>
+            <li><a class="button button--ghost" href="#contact">Get in touch</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================ ABOUT ================================ -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container section__grid">
+        <h2 class="section__title" id="about-title">About me</h2>
+
+        <div class="section__body">
+          <p class="lead reveal">
+            I'm a Bachelor of Science in Computer Science student interested in learning about programming and web development.
+          </p>
+
+          <div class="about__columns">
+            <div class="about__text">
+              <p class="reveal">
+                I'm currently developing my skills in HTML, CSS, JavaScript and Java. As a student, I enjoy
+                learning new technologies and improving my programming skills through practice and school activities.
+              </p>
+              <p class="reveal">
+                My goal is to keep building my knowledge and eventually create useful and practical applications.
+              </p>
+            </div>
+>
+            <figure class="portrait reveal">
+            <img src="assets/ruizo.jpg.jpg" alt="Niko Jhon Ruizo smiling at the camera" width="800" height="1000">
+            </figure>
+          </div>
+
+          <dl class="facts reveal">
+            <div class="facts__item">
+              <dt>Studying at</dt>
+              <dd>University of Northern Philippines</dd>
+            </div>
+            <div class="facts__item">
+              <dt>Course</dt>
+              <dd>BS Computer Science</dd>
+            </div>
+            <div class="facts__item">
+              <dt>Languages</dt>
+              <dd>HTML, CSS, JavaScript, Java</dd>
+            </div>
+            <div class="facts__item">
+              <dt>Currently learning</dt>
+              <dd>Programming and web development</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================ RESUME ================================ -->
+    <section class="section" id="resume" aria-labelledby="resume-title">
+      <div class="container section__grid">
+        <h2 class="section__title" id="resume-title">Resume</h2>
+
+        <div class="section__body">
+          <a class="project reveal" href="project/account.html">
+            <span class="project">Featured academic work</span>
+            <span class="project__title">Project 1</span>
+            <span class="project__text">
+              A look at my first project: the problem it addresses, how we approached it and what we built.
+            </span>
+            <span class="capstone__cta">View Project </span>
+          </a>
+
+          <p class="resume__download reveal">
+            <a class="text-link" href="assets/Niko_Jhon_Ruizo_Resume.pdf" download>Download the full resume (PDF)</a>
+          </p>
+          <section class="resume-group reveal" aria-labelledby="status-title">
+            <h3 class="resume-group__title" id="status-title">Current status</h3>
+            <ol class="timeline">
+              <li class="timeline__item">
+                <p class="timeline__when">Present</p>
+                <div class="timeline__what">
+                  <h4>Student / Beginner Developer</h4>
+                  <ul>
+                    <li>Developing programming and web development skills through academic activities and personal practice.</li>
+                  </ul>
+                </div>
+              </li>
+            </ol>
+          </section>
+
+          <!-- Education -->
+          <section class="resume-group reveal" aria-labelledby="edu-title">
+            <h3 class="resume-group__title" id="edu-title">Education</h3>
+            <ol class="timeline">
+              <li class="timeline__item">
+                <p class="timeline__when">Currently studying</p>
+                <div class="timeline__what">
+                  <h4>Bachelor of Science in Computer Science</h4>
+                  <p class="timeline__org">University of Northern Philippines</p>
+                </div>
+              </li>
+              <li class="timeline__item">
+                <p class="timeline__when">Graduated <time datetime="2022">2022</time></p>
+                <div class="timeline__what">
+                  <h4>Senior High School</h4>
+                  <p class="timeline__org">Cabugao Institute</p>
+                </div>
+              </li>
+              <li class="timeline__item">
+                <p class="timeline__when">Graduated <time datetime="2016">2016</time></p>
+                <div class="timeline__what">
+                  <h4>Elementary Education</h4>
+                  <p class="timeline__org">Daclapan Elementary School</p>
+                </div>
+              </li>
+            </ol>
+          </section>
+
+          <!-- Skills -->
+          <section class="resume-group reveal" aria-labelledby="skills-title">
+            <h3 class="resume-group__title" id="skills-title">Skills</h3>
+            <ul class="chips">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>Java</li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================ PROJECTS ================================ -->
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title" id="projects-title">Projects</h2>
+          <p class="section__note reveal">Hover or focus a project to see a preview.</p>
+        </div>
+        <ul class="project-list" data-project-list>
+          <li class="reveal">
+            <a class="project" href="project/account.html"
+               data-color-a="#f0b95a" data-color-b="#d9663f" data-preview="Capstone 1">
+              <span class="project__main">
+                <span class="project__name">Project 1</span>
+                <span class="project__desc">My first project for the Computer Science program.</span>
+              </span>
+              <span class="project__meta">
+                <span>Academic project</span>
+              </span>
+            </a>
+          </li>
+          <li class="reveal">
+            <a class="project" href="#hero"
+               data-color-a="#7ad0c0" data-color-b="#2f6f8f" data-preview="Portfolio">
+              <span class="project__main">
+                <span class="project__name">This portfolio</span>
+                <span class="project__desc">A personal website built with HTML, CSS and JavaScript to practise responsive, accessible design.</span>
+              </span>
+              <span class="project__meta">
+                <span>Web development</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+        <div class="project-preview" aria-hidden="true" data-project-preview>
+          <span class="project-preview__label" data-preview-label></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================ CONTACT ================================ -->
+    <section class="section section--contact" id="contact" aria-labelledby="contact-title">
+      <div class="container section__grid">
+        <h2 class="section__title" id="contact-title">Contact</h2>
+
+        <div class="section__body">
+          <p class="lead reveal">
+            Want to say hello or talk about a project? Email me at
+            <a class="email-link" href="mailto: nja.ruizo@unp.edu.ph">nja.ruizo@unp.edu.ph</a>
+            or use the form.
+          </p>
+
+          <form class="form reveal" id="contact-form" novalidate data-contact-form>
+            <div class="field">
+              <label for="name">Your name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-error">
+              <p class="field__error" id="name-error" hidden></p>
+            </div>
+
+            <div class="field">
+              <label for="email">Your email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error">
+              <p class="field__error" id="email-error" hidden></p>
+            </div>
+
+            <div class="field field--full">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required aria-describedby="message-error"></textarea>
+              <p class="field__error" id="message-error" hidden></p>
+            </div>
+
+            <div class="form__footer field--full">
+              <button class="button button--solid" type="submit">Send message</button>
+              <p class="form__status" id="form-status" role="status" aria-live="polite" data-form-status></p>
+            </div>
+          </form>
+
+          <ul class="social reveal" aria-label="Find me elsewhere">
+            <!-- EDIT: your profile links; delete any you don't use -->
+            <li><a class="text-link" href="https://github.com/njaruizo-del" rel="noopener">GitHub</a></li>
+            <li><a class="text-link" href="https://www.linkedin.com/in/niko-jhon-alameda-ruizo-0a74843a6/?isSelfProfile=true" rel="noopener">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================================ FOOTER ================================ -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p>&copy; <span data-year>2026</span> Niko Jhon Ruizo. Designed and coded by hand.</p>
+      <a class="text-link" href="#hero">Back to top</a>
+    </div>
+  </footer>
+</body>
+</html>
