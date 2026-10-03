@@ -135,13 +135,7 @@
     // If the window grows past the mobile breakpoint, reset the menu state
     mobileMQ.addEventListener('change', (e) => { if (!e.matches) setMenu(false); });
   }
- 
- 
-  /* ------------------------------------------------------------------------
-     05. ACTIVE SECTION HIGHLIGHTING
-     IntersectionObserver marks the nav link of the section in view with
-     aria-current="location" (announced by screen readers, styled in CSS).
-     ------------------------------------------------------------------------ */
+
   const navLinks = $$('.site-nav a[href^="#"]');
   const sections = navLinks
     .map(link => $(link.getAttribute('href')))
@@ -165,12 +159,6 @@
     sections.forEach(section => sectionObserver.observe(section));
   }
  
- 
-  /* ------------------------------------------------------------------------
-     06. SCROLL REVEAL
-     Elements with .reveal fade/slide into place the first time they appear.
-     Siblings get a small stagger so lists feel sequenced, not simultaneous.
-     ------------------------------------------------------------------------ */
   const revealItems = $$('.reveal');
  
   if ('IntersectionObserver' in window && !prefersReduced()) {
@@ -193,15 +181,6 @@
     revealItems.forEach(item => item.classList.add('is-visible'));
   }
  
- 
-  /* ------------------------------------------------------------------------
-     07. HERO TITLE
-     a) Split each line into letters (.char) for the staggered load-in.
-        The real text stays in a visually-hidden span so assistive tech reads
-        "Niko Jhon Ruizo" instead of individual letters.
-     b) On devices with a pointer, letters gain weight as the cursor nears
-        them by updating the --wght custom property (variable font axis).
-     ------------------------------------------------------------------------ */
   const heroTitle = $('[data-hero-title]');
  
   if (heroTitle) {
@@ -265,13 +244,6 @@
     }
   }
  
- 
-  /* ------------------------------------------------------------------------
-     08. PROJECT LIST PREVIEW
-     A card follows the cursor (with easing) while a project row is hovered,
-     and appears beside the row when it receives keyboard focus.
-     Other rows dim so the active one stands out.
-     ------------------------------------------------------------------------ */
   const projectList = $('[data-project-list]');
   const preview     = $('[data-project-preview]');
  
@@ -354,18 +326,7 @@
     }, { passive: true });
   }
  
- 
-  /* ------------------------------------------------------------------------
-     09. CONTACT FORM
-     Client-side validation with accessible errors:
-       - message text next to the field (not colour alone)
-       - aria-invalid + aria-describedby tie the message to the input
-       - focus moves to the first invalid field
-       - a polite live region announces the result
-     On success it opens the visitor's email app with the message pre-filled.
-     EDIT: to send without an email app, point the form at a service such as
-     Formspree/Netlify Forms and replace the mailto section below with fetch().
-     ------------------------------------------------------------------------ */
+
   const form = $('[data-contact-form]');
  
   if (form) {
