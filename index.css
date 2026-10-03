@@ -1,0 +1,814 @@
+:root {
+  /* Colour */
+  --bg:         #101a1d;
+  --surface:    #172529;
+  --surface-2:  #1e3237;
+  --text:       #e8efe9;
+  --muted:      #9fb2ad;
+  --accent:     #f0b95a;
+  --accent-ink: #101a1d;
+  --line:       rgba(232, 239, 233, 0.16);
+  --error:      #ff9d8f;   /* ≈ 8:1 on --bg */
+ 
+
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-body:    "Newsreader", Georgia, "Times New Roman", serif;
+ 
+
+  --step--1: clamp(0.9rem, 0.88rem + 0.1vw, 1rem);
+  --step-0:  clamp(1.1rem, 1.05rem + 0.25vw, 1.25rem);
+  --step-1:  clamp(1.35rem, 1.2rem + 0.75vw, 1.75rem);
+  --step-2:  clamp(1.75rem, 1.4rem + 1.6vw, 2.75rem);
+  --step-3:  clamp(2.25rem, 1.6rem + 3vw, 4.25rem);
+ 
+
+  --gutter:   clamp(1.25rem, 5vw, 4rem);
+  --maxw:     80rem;
+  --header-h: 4.5rem;
+  --space-section: clamp(5rem, 12vw, 10rem);
+  --radius: 0.75rem;
+ 
+  
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+ 
+
+  color-scheme: dark;
+}
+ 
+ 
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+ 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);   
+  -webkit-text-size-adjust: 100%;
+}
+ 
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.65;                      /* serif text gets slightly more leading */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+ 
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+ 
+img, svg { display: block; max-width: 100%; }
+ 
+a { color: inherit; }
+ 
+p { max-width: 62ch; }                    
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+ 
+::selection { background: var(--accent); color: var(--accent-ink); }
+ 
+ 
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+ 
+/* Skip link: off-screen until focused */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  padding: 0.75rem 1.1rem;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius);
+  transform: translateY(-200%);
+  transition: transform 0.2s var(--ease);
+}
+.skip-link:focus { transform: none; }
+ 
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+ 
+ 
+/* ==========================================================================
+   04. CUSTOM SCROLLBAR & PROGRESS BAR
+   ========================================================================== */
+ 
+/* Firefox + modern Chromium */
+html { scrollbar-width: thin; scrollbar-color: var(--accent) var(--bg); }
+ 
+/* WebKit fallback */
+::-webkit-scrollbar { width: 12px; height: 12px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--surface-2);
+  border: 3px solid var(--bg);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+ 
+/* Page-scroll progress (width driven by --progress, set in script.js) */
+.progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 3px;
+  z-index: 60;
+  background: var(--accent);
+  transform-origin: left center;
+  transform: scaleX(var(--progress, 0));
+  pointer-events: none;
+}
+ 
+ 
+/* ==========================================================================
+   05. LAYOUT PRIMITIVES
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+ 
+.section { padding-block: var(--space-section); }
+ 
+/* Heading on the left, content on the right (desktop) */
+.section__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+ 
+.section__title {
+  font-size: var(--step-2);
+  font-weight: 700;
+  font-stretch: 90%;
+}
+ 
+/* Only the left-column titles stick; keeps the heading in view while reading */
+.section__grid > .section__title {
+  position: sticky;
+  top: calc(var(--header-h) + 1.5rem);
+}
+ 
+.section__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+ 
+.section__note { color: var(--muted); font-size: var(--step--1); }
+ 
+.section__body { display: grid; gap: clamp(2rem, 4vw, 3.5rem); }
+ 
+.lead {
+  font-size: var(--step-1);
+  line-height: 1.45;
+  max-width: 34ch;
+  font-family: var(--font-body);
+}
+ 
+ 
+/* ==========================================================================
+   06. BUTTONS & LINKS
+   ========================================================================== */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;                       /* ≥ 44px touch target */
+  padding: 0.7rem 1.6rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid var(--accent);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.3s var(--ease), color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+ 
+.button--solid { background: var(--accent); color: var(--accent-ink); }
+.button--solid:hover { background: transparent; color: var(--accent); }
+ 
+.button--ghost { background: transparent; color: var(--text); border-color: var(--line); }
+.button--ghost:hover { border-color: var(--accent); color: var(--accent); }
+ 
+.button:active { transform: scale(0.97); }
+ 
+/* Underline that draws in from the left on hover/focus */
+.text-link,
+.email-link {
+  color: var(--text);
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 1px;
+  padding-bottom: 2px;
+  transition: background-size 0.4s var(--ease), color 0.3s var(--ease);
+}
+.text-link:hover,
+.email-link:hover { color: var(--accent); background-size: 100% 3px; }
+ 
+.email-link { color: var(--accent); white-space: nowrap; }
+ 
+ 
+/* ==========================================================================
+   07. HEADER & NAVIGATION
+   ========================================================================== */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  height: var(--header-h);
+  transition: transform 0.45s var(--ease);
+}
+ 
+/* Hides on scroll-down, returns on scroll-up (toggled by script.js) */
+.site-header.is-hidden { transform: translateY(-100%); }
+ 
+/* Frosted background lives on a pseudo-element so backdrop-filter doesn't
+   create a containing block that would break the fixed mobile menu. */
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(16, 26, 29, 0.78);
+  -webkit-backdrop-filter: blur(14px);
+          backdrop-filter: blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s var(--ease);
+}
+.site-header.is-scrolled::before { border-bottom-color: var(--line); }
+ 
+.site-header__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+ 
+.brand {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+ 
+.site-nav__list { display: flex; gap: clamp(0.5rem, 2vw, 1.5rem); }
+ 
+.site-nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding-inline: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.3s var(--ease);
+}
+ 
+/* Small bar under the current section's link */
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0.5rem; right: 0.5rem; bottom: 0.35rem;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease);
+}
+.site-nav a:hover,
+.site-nav a[aria-current="location"] { color: var(--text); }
+.site-nav a:hover::after,
+.site-nav a[aria-current="location"]::after { transform: scaleX(1); }
+ 
+/* Menu button only exists on small screens (see section 15) */
+.nav-toggle {
+  position: relative;
+  z-index: 2;
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 2.75rem;
+  padding: 0 0.25rem;
+  background: none;
+  border: 0;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+ 
+/* Two-line hamburger that turns into an X */
+.nav-toggle__icon,
+.nav-toggle__icon::before {
+  display: block;
+  width: 1.5rem;
+  height: 2px;
+  background: currentColor;
+  transition: transform 0.35s var(--ease);
+}
+.nav-toggle__icon { position: relative; transform: translateY(-4px); }
+.nav-toggle__icon::before { content: ""; position: absolute; top: 8px; left: 0; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon { transform: rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon::before { transform: translateY(-8px) rotate(-90deg); }
+ 
+ 
+/* ==========================================================================
+   08. HERO
+   The memorable moment: a huge variable-font name whose letters rise in on
+   load, then swell in weight as the cursor passes (script.js sets --wght).
+   ========================================================================== */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 100svh;
+  min-height: 100dvh;
+  padding-top: calc(var(--header-h) + 2rem);
+  padding-bottom: clamp(2.5rem, 7vw, 5rem);
+  overflow: hidden;
+}
+ 
+/* Soft glow behind the name; purely decorative */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -20%; right: -15%;
+  width: min(60vw, 46rem);
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(240, 185, 90, 0.16), transparent 65%);
+  pointer-events: none;
+}
+ 
+.hero__inner { position: relative; display: grid; gap: clamp(2rem, 5vw, 4rem); }
+ 
+.hero__title {
+  /* Slight upward drift while scrolling away (--scroll set by script.js) */
+  transform: translateY(calc(var(--scroll, 0) * -0.12px));
+  font-size: clamp(3.5rem, 16vw, 15rem);
+  font-weight: 400;
+  font-stretch: 78%;                       /* condensed width = bigger letters per screen */
+  line-height: 0.82;
+  letter-spacing: -0.045em;
+  text-transform: none;
+}
+ 
+.hero__line {
+  display: block;
+  overflow: hidden;                        /* letters rise out of a mask */
+  padding-block: 0.06em 0.1em;
+  margin-block: -0.06em -0.1em;
+}
+ 
+/* Letters created by script.js */
+.char {
+  display: inline-block;
+  font-variation-settings: "wght" var(--wght, 320);
+  transition: font-variation-settings 0.35s var(--ease);
+}
+ 
+/* Orchestrated load-in: letters rise one after another (only when JS is on) */
+.js .char {
+  animation: rise 1s var(--ease) both;
+  animation-delay: calc(var(--i, 0) * 55ms + 150ms);
+}
+@keyframes rise {
+  from { transform: translateY(105%); }
+  to   { transform: none; }
+}
+ 
+.hero__intro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem 3rem;
+}
+ 
+.js .hero__intro { animation: fade-in 1s var(--ease) 0.9s both; }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+ 
+.hero__lede { font-size: var(--step-1); line-height: 1.4; max-width: 30ch; }
+ 
+.hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+ 
+ 
+/* ==========================================================================
+   09. ABOUT
+   ========================================================================== */
+.about__columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+.about__text { display: grid; gap: 1.25rem; }
+ 
+.portrait {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+}
+.portrait img { width: 100%; height: 100%; object-fit: cover; }
+.portrait__placeholder {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(240, 185, 90, 0.35), transparent 55%),
+    var(--surface-2);
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 300;
+  font-stretch: 80%;
+  color: var(--text);
+}
+ 
+.facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+}
+.facts__item { padding-block: 1.25rem; border-bottom: 1px solid var(--line); padding-right: 1rem; }
+.facts dt { color: var(--muted); font-size: var(--step--1); }
+.facts dd { font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; margin-top: 0.15rem; }
+ 
+ 
+/* ==========================================================================
+   10. RESUME
+   ========================================================================== */
+ 
+/* Capstone Project 1 feature link */
+.capstone {
+  display: grid;
+  gap: 0.6rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);    /* the accent edge marks this as the featured item */
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: background-color 0.35s var(--ease), border-color 0.35s var(--ease), transform 0.35s var(--ease);
+}
+.capstone:hover { background: var(--surface-2); transform: translateX(6px); }
+ 
+.capstone__kicker { font-size: var(--step--1); color: var(--muted); }
+.capstone__title { font-family: var(--font-display); font-size: var(--step-1); font-weight: 600; line-height: 1.2; }
+.capstone__text { color: var(--muted); max-width: 52ch; }
+.capstone__cta {
+  justify-self: start;
+  margin-top: 0.4rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--accent);
+  border-bottom: 2px solid currentColor;
+}
+ 
+.resume-group { display: grid; gap: 1.25rem; }
+.resume-group__title { font-size: var(--step-1); font-weight: 600; }
+ 
+/* Timeline: date column + details column */
+.timeline { border-top: 1px solid var(--line); }
+.timeline__item {
+  display: grid;
+  grid-template-columns: minmax(8rem, 1fr) minmax(0, 3fr);
+  gap: 0.5rem 2rem;
+  padding-block: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+.timeline__when { color: var(--muted); font-size: var(--step--1); }
+.timeline__what h4 { font-size: 1.2rem; font-weight: 600; letter-spacing: -0.01em; }
+.timeline__org { color: var(--muted); margin-top: 0.2rem; }
+.timeline__what ul { margin-top: 0.6rem; display: grid; gap: 0.35rem; color: var(--muted); }
+.timeline__what li { padding-left: 1.1rem; position: relative; }
+.timeline__what li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.8em;
+  width: 0.5rem; height: 2px;
+  background: var(--accent);
+}
+ 
+.chips { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.chips li {
+  padding: 0.4rem 1rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  transition: border-color 0.3s var(--ease), color 0.3s var(--ease);
+}
+.chips li:hover { border-color: var(--accent); color: var(--accent); }
+ 
+ 
+/* ==========================================================================
+   11. PROJECTS
+   Large list rows; hovering one dims the rest and shows a floating preview.
+   ========================================================================== */
+.project-list { border-top: 1px solid var(--line); }
+.project-list li { border-bottom: 1px solid var(--line); }
+ 
+.project {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem 2rem;
+  align-items: end;
+  padding-block: clamp(1.5rem, 3.5vw, 2.5rem);
+  text-decoration: none;
+  transition: opacity 0.35s var(--ease), padding-left 0.45s var(--ease);
+}
+ 
+.project__main { display: grid; gap: 0.6rem; }
+ 
+.project__name {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  font-weight: 500;
+  font-stretch: 85%;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  transition: color 0.35s var(--ease), font-variation-settings 0.45s var(--ease);
+}
+ 
+.project__desc { color: var(--muted); max-width: 46ch; font-size: var(--step--1); line-height: 1.5; }
+ 
+.project__meta {
+  display: grid;
+  gap: 0.15rem;
+  justify-items: end;
+  text-align: right;
+  color: var(--muted);
+  font-family: var(--font-display);
+  font-size: var(--step--1);
+}
+ 
+/* Hover + keyboard focus share the same treatment */
+.project:hover,
+.project:focus-visible { padding-left: 1rem; }
+.project:hover .project__name,
+.project:focus-visible .project__name { color: var(--accent); font-variation-settings: "wght" 700; }
+ 
+/* Dim the other rows while one is active (class toggled by script.js) */
+.project-list.has-active .project:not(.is-current) { opacity: 0.35; }
+ 
+/* Floating preview card; positioned with transform by script.js.
+   Only used on devices with a fine pointer; on touch the row text is enough. */
+.project-preview {
+  --a: #f0b95a;
+  --b: #d9663f;
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 40;
+  width: 19rem;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.1rem;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--a), var(--b));
+  color: #101a1d;                          /* dark text, ≥ 4.5:1 on all preview gradients */
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.45);
+  transition: opacity 0.3s var(--ease), scale 0.4s var(--ease);
+  scale: 0.9;
+}
+.project-preview.is-active { opacity: 1; scale: 1; }
+ 
+/* Abstract shapes so the card feels designed even without real screenshots.
+   EDIT: swap the gradient for a background-image per project if you have screenshots. */
+.project-preview::before,
+.project-preview::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+}
+.project-preview::before { width: 11rem; height: 11rem; top: -3rem; right: -2.5rem; }
+.project-preview::after  { width: 5rem; height: 5rem; top: 4.5rem; left: 2rem; background: rgba(16, 26, 29, 0.14); }
+ 
+.project-preview__label {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  font-stretch: 85%;
+  letter-spacing: -0.03em;
+}
+ 
+ 
+/* ==========================================================================
+   12. CONTACT & FORM
+   ========================================================================== */
+.section--contact { border-top: 1px solid var(--line); }
+ 
+.form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  max-width: 44rem;
+}
+.field { display: grid; gap: 0.5rem; align-content: start; }
+.field--full { grid-column: 1 / -1; }
+ 
+.field label { font-family: var(--font-display); font-weight: 500; font-size: 1rem; }
+ 
+.field input,
+.field textarea {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.8rem 1rem;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 1.05rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: border-color 0.3s var(--ease), background-color 0.3s var(--ease);
+}
+.field textarea { resize: vertical; min-height: 9rem; }
+.field input:hover,
+.field textarea:hover { border-color: var(--muted); }
+ 
+/* Native outline is replaced by a clear, high-contrast border + ring */
+.field input:focus-visible,
+.field textarea:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+  border-color: var(--accent);
+}
+ 
+/* Error state: colour AND text message (never colour alone, WCAG 1.4.1) */
+.field [aria-invalid="true"] { border-color: var(--error); }
+.field__error { color: var(--error); font-size: var(--step--1); }
+ 
+.form__footer { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; }
+.form__status { color: var(--muted); font-size: var(--step--1); }
+ 
+.social { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; font-family: var(--font-display); font-weight: 500; }
+.social a { display: inline-block; padding-block: 0.6rem; }   /* larger tap area */
+ 
+ 
+/* ==========================================================================
+   13. FOOTER
+   ========================================================================== */
+.site-footer { padding-block: 2rem; border-top: 1px solid var(--line); color: var(--muted); font-size: var(--step--1); }
+.site-footer__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+.site-footer .text-link { color: var(--text); padding-block: 0.6rem; }
+ 
+ 
+/* ==========================================================================
+   14. SCROLL-REVEAL STATES
+   Elements are only hidden when the "js" class exists, so content is never
+   lost if scripts fail. script.js adds .is-visible as they enter the viewport.
+   ========================================================================== */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+  transition-delay: var(--delay, 0ms);
+}
+.js .reveal.is-visible { opacity: 1; transform: none; }
+ 
+ 
+/* ==========================================================================
+   15. RESPONSIVE ADJUSTMENTS
+   ========================================================================== */
+ 
+/* Tablet and below: stack section headings above content */
+@media (max-width: 64em) {
+  .section__grid { grid-template-columns: 1fr; }
+  .section__grid > .section__title { position: static; }
+  .lead { max-width: 40ch; }
+}
+ 
+/* Phones: full-screen menu, single-column layouts */
+@media (max-width: 48em) {
+  .nav-toggle { display: inline-flex; }
+ 
+  /* Overlay menu. Hidden state uses visibility so links leave the tab order. */
+  .site-nav {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: calc(var(--header-h) + 1rem) var(--gutter) 2rem;
+    background: var(--bg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-1rem);
+    transition: opacity 0.35s var(--ease), transform 0.35s var(--ease), visibility 0s linear 0.35s;
+  }
+  .site-nav.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition-delay: 0s;
+  }
+  .site-nav__list { flex-direction: column; gap: 0.25rem; }
+  .site-nav a {
+    min-height: 3.5rem;
+    font-size: clamp(2.25rem, 11vw, 3.5rem);
+    font-weight: 600;
+    color: var(--text);
+  }
+  .site-nav a::after { left: 0.5rem; right: auto; width: 2rem; bottom: 0.6rem; }
+ 
+  .about__columns { grid-template-columns: 1fr; }
+  .portrait { max-width: 18rem; }
+ 
+  .timeline__item { grid-template-columns: 1fr; }
+ 
+  /* Project rows stack; the preview card is not used on small screens */
+  .project { grid-template-columns: 1fr; }
+  .project__meta { justify-items: start; text-align: left; grid-auto-flow: column; gap: 1rem; }
+  .project:hover,
+  .project:focus-visible { padding-left: 0; }
+  .project-preview { display: none; }
+}
+ 
+@media (max-width: 36em) {
+  .facts { grid-template-columns: 1fr; }
+  .form { grid-template-columns: 1fr; }
+  .hero__actions .button { flex: 1 1 auto; }
+}
+ 
+/* Touch devices: no hover, so don't dim rows or shift on tap */
+@media (hover: none) {
+  .project:hover { padding-left: 0; }
+  .capstone:hover { transform: none; }
+  .project-preview { display: none; }
+}
+ 
+ 
+/* ==========================================================================
+   16. REDUCED MOTION
+   Honours the operating-system "reduce motion" setting (WCAG 2.3.3).
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+ 
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+ 
+  .js .reveal { opacity: 1; transform: none; }
+  .hero__title { transform: none; }
+  .progress { display: none; }
+}
+ 
