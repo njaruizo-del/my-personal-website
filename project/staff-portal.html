@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Portal | Rhajj Laundry</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="staff-portal.css">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <!-- Branding -->
+        <div class="brand">
+            <div class="brand-icon">
+                <i data-lucide="waves"></i>
+            </div>
+            <span class="brand-name">RHAJJ <span>LAUNDRY</span></span>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="sidebar-nav">
+            <a href="account.html" class="nav-item">
+                <i data-lucide="user"></i>
+                Account
+            </a>
+            <a href="dashboard.html" class="nav-item active">
+                <i data-lucide="layout-dashboard"></i>
+                Dashboard
+            </a>
+            <a href="create-account.html" class="nav-item">
+                <i data-lucide="user-plus"></i>
+                Create Account
+            </a>
+            <a href="statistics.html" class="nav-item">
+                <i data-lucide="bar-chart-3"></i>
+                Statistics
+            </a>
+        </nav>
+
+        <!-- Bottom Section (Settings, Profile & Logout) -->
+        <div class="sidebar-bottom">
+            <a href="settings.html" class="nav-item">
+                <i data-lucide="settings"></i>
+                Settings
+            </a>
+            
+            <div class="staff-profile-container">
+                <div class="staff-profile">
+                    <div class="staff-avatar">RJ</div>
+                    <div class="staff-info">
+                        <span class="staff-name">Rafael Jhon Jevardan</span>
+                        <span class="staff-role">Staff Administrator</span>
+                    </div>
+                </div>
+                <a href="login.html" class="nav-item logout-button" id="logoutButton">
+                    <i data-lucide="log-out"></i>
+                    Logout
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Space -->
+    <main class="main-content">
+        
+        <!-- Mobile Header -->
+        <div class="mobile-header">
+            <button id="mobileMenuBtn" class="mobile-menu-btn">
+                <i data-lucide="menu"></i>
+            </button>
+            <span class="mobile-brand">RHAJJ LAUNDRY</span>
+        </div>
+
+        <div class="page-header">
+            <h1>Staff Dashboard</h1>
+        </div>
+        
+        <div class="content-card">
+            <p class="content-text">
+                Select a menu item from the sidebar to manage customer accounts, view laundry statistics, or adjust portal settings.
+            </p>
+        </div>
+    </main>
+
+    <!-- Mobile Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- JavaScript -->
+    <script src="staff-portal.js"></script>
+</body>
+</html>

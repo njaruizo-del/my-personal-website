@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics & Reports | Rhajj Laundry</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Base Layout & Specific CSS -->
+    <link rel="stylesheet" href="staff-portal.css">
+    <link rel="stylesheet" href="statistics.css">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">
+                <i data-lucide="waves"></i>
+            </div>
+            <span class="brand-name">RHAJJ <span>LAUNDRY</span></span>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="account.html" class="nav-item">
+                <i data-lucide="user"></i>
+                Account
+            </a>
+            <a href="dashboard.html" class="nav-item">
+                <i data-lucide="layout-dashboard"></i>
+                Dashboard
+            </a>
+            <a href="create-account.html" class="nav-item">
+                <i data-lucide="user-plus"></i>
+                Create Account
+            </a>
+            <a href="statistics.html" class="nav-item active">
+                <i data-lucide="bar-chart-3"></i>
+                Statistics
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="settings.html" class="nav-item">
+                <i data-lucide="settings"></i>
+                Settings
+            </a>
+            
+            <div class="staff-profile-container">
+                <div class="staff-profile">
+                    <div class="staff-avatar">RJ</div>
+                    <div class="staff-info">
+                        <span class="staff-name">Rafael Jhon Jevardan</span>
+                        <span class="staff-role">Staff Administrator</span>
+                    </div>
+                </div>
+                <a href="login.html" class="nav-item logout-button" id="logoutButton">
+                    <i data-lucide="log-out"></i>
+                    Logout
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Space -->
+    <main class="main-content">
+        
+        <!-- Mobile Header -->
+        <div class="mobile-header">
+            <button id="mobileMenuBtn" class="mobile-menu-btn">
+                <i data-lucide="menu"></i>
+            </button>
+            <span class="mobile-brand">RHAJJ LAUNDRY</span>
+        </div>
+
+        <div class="page-header header-with-action">
+            <h1>Statistics & Reports</h1>
+            <button id="generateReportBtn" class="btn-primary">
+                <i data-lucide="file-text"></i>
+                Generate EOD Report
+            </button>
+        </div>
+        
+        <!-- Tabs Navigation -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" data-target="overviewTab">Overview</button>
+            <button class="tab-btn" data-target="reportsTab">Generated Reports</button>
+        </div>
+
+        <!-- Tab Content 1: Overview -->
+        <div id="overviewTab" class="tab-pane active">
+            <!-- Key Metrics Grid -->
+            <div class="stats-overview">
+                <div class="stat-box">
+                    <div class="stat-header">
+                        <span class="stat-title">Today's Orders</span>
+                        <i data-lucide="shopping-cart" class="stat-icon-small"></i>
+                    </div>
+                    <div class="stat-value">28</div>
+                    <div class="stat-trend trend-up">
+                        <i data-lucide="trending-up"></i>
+                        <span>+4 from yesterday</span>
+                    </div>
+                </div>
+
+                <div class="stat-box success">
+                    <div class="stat-header">
+                        <span class="stat-title">Today's Volume</span>
+                        <i data-lucide="scale" class="stat-icon-small"></i>
+                    </div>
+                    <div class="stat-value">145 kg</div>
+                    <div class="stat-trend trend-up">
+                        <i data-lucide="trending-up"></i>
+                        <span>+12 kg from yesterday</span>
+                    </div>
+                </div>
+
+                <div class="stat-box purple">
+                    <div class="stat-header">
+                        <span class="stat-title">Today's Revenue</span>
+                        <i data-lucide="coins" class="stat-icon-small"></i>
+                    </div>
+                    <div class="stat-value">₱4,350</div>
+                    <div class="stat-trend trend-up">
+                        <i data-lucide="trending-up"></i>
+                        <span>+₱600 from yesterday</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weekly Volume Chart -->
+            <div class="content-card chart-container">
+                <div class="chart-header">
+                    <h2 class="chart-title">Revenue Trend (Last 7 Days)</h2>
+                    <select class="chart-filter">
+                        <option>This Week</option>
+                        <option>Last Week</option>
+                        <option>This Month</option>
+                    </select>
+                </div>
+                
+                <div class="mock-chart">
+                    <div class="chart-bar-group"><div class="chart-bar" style="height: 100%;"><div class="chart-bar-fill" style="height: 45%;"></div></div><span class="chart-label">Mon</span></div>
+                    <div class="chart-bar-group"><div class="chart-bar" style="height: 100%;"><div class="chart-bar-fill" style="height: 60%;"></div></div><span class="chart-label">Tue</span></div>
+                    <div class="chart-bar-group"><div class="chart-bar" style="height: 100%;"><div class="chart-bar-fill" style="height: 85%;"></div></div><span class="chart-label">Wed</span></div>
+                    <div class="chart-bar-group"><div class="chart-bar" style="height: 100%;"><div class="chart-bar-fill" style="height: 50%;"></div></div><span class="chart-label">Thu</span></div>
+                    <div class="chart-bar-group"><div class="chart-bar" style="height: 100%;"><div class="chart-bar-fill" style="height: 75%;"></div></div><span class="chart-label">Fri</span></div>
+                    <div class="chart-bar-group"><div class="chart-bar" style="height: 100%;"><div class="chart-bar-fill" style="height: 95%;"></div></div><span class="chart-label">Sat</span></div>
+                    <div class="chart-bar-group"><div class="chart-bar" style="height: 100%;"><div class="chart-bar-fill" style="height: 30%;"></div></div><span class="chart-label">Sun</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Content 2: Generated Reports -->
+        <div id="reportsTab" class="tab-pane">
+            <div class="content-card table-container">
+                <div class="table-header">
+                    <h2>End of Day (EOD) Sales Reports</h2>
+                </div>
+                <table class="data-table" id="reportsTable">
+                    <thead>
+                        <tr>
+                            <th>Report Date</th>
+                            <th>Generated By</th>
+                            <th>Total Revenue</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sep 08, 2026 (End of Day)</td>
+                            <td>Rafael Jhon Jevardan</td>
+                            <td class="amount">₱3,750.00</td>
+                            <td>
+                                <button class="action-btn" aria-label="Download PDF"><i data-lucide="download"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sep 07, 2026 (End of Day)</td>
+                            <td>Rafael Jhon Jevardan</td>
+                            <td class="amount">₱4,120.00</td>
+                            <td>
+                                <button class="action-btn" aria-label="Download PDF"><i data-lucide="download"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sep 06, 2026 (End of Day)</td>
+                            <td>Rafael Jhon Jevardan</td>
+                            <td class="amount">₱5,600.00</td>
+                            <td>
+                                <button class="action-btn" aria-label="Download PDF"><i data-lucide="download"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Mobile Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- JavaScript -->
+    <script src="staff-portal.js"></script>
+    <script src="statistics.js"></script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Rhajj Laundry</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Base Layout & Specific CSS -->
+    <link rel="stylesheet" href="staff-portal.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">
+                <i data-lucide="waves"></i>
+            </div>
+            <span class="brand-name">RHAJJ <span>LAUNDRY</span></span>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="account.html" class="nav-item">
+                <i data-lucide="user"></i>
+                Account
+            </a>
+            <a href="dashboard.html" class="nav-item active">
+                <i data-lucide="layout-dashboard"></i>
+                Dashboard
+            </a>
+            <a href="create-account.html" class="nav-item">
+                <i data-lucide="user-plus"></i>
+                Create Account
+            </a>
+            <a href="statistics.html" class="nav-item">
+                <i data-lucide="bar-chart-3"></i>
+                Statistics
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="settings.html" class="nav-item">
+                <i data-lucide="settings"></i>
+                Settings
+            </a>
+            
+            <div class="staff-profile-container">
+                <div class="staff-profile">
+                    <div class="staff-avatar">RJ</div>
+                    <div class="staff-info">
+                        <span class="staff-name">Rafael Jhon Jevardan</span>
+                        <span class="staff-role">Staff Administrator</span>
+                    </div>
+                </div>
+                <a href="login.html" class="nav-item logout-button" id="logoutButton">
+                    <i data-lucide="log-out"></i>
+                    Logout
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Space -->
+    <main class="main-content">
+        
+        <!-- Mobile Header -->
+        <div class="mobile-header">
+            <button id="mobileMenuBtn" class="mobile-menu-btn">
+                <i data-lucide="menu"></i>
+            </button>
+            <span class="mobile-brand">RHAJJ LAUNDRY</span>
+        </div>
+
+        <div class="page-header">
+            <h1>Dashboard Overview</h1>
+        </div>
+        
+        <!-- Clickable Summary Cards -->
+        <div class="stats-grid">
+            <a href="overall-sales.html" class="stat-card">
+                <div class="stat-icon" style="background: var(--light-blue); color: var(--primary-blue);">
+                    <i data-lucide="activity"></i>
+                </div>
+                <div class="stat-details">
+                    <h3>Overall Sales</h3>
+                    <p class="stat-number">₱12,450</p>
+                </div>
+                <i data-lucide="chevron-right" class="stat-arrow"></i>
+            </a>
+
+            <a href="customers-today.html" class="stat-card">
+                <div class="stat-icon" style="background: #F0FDF4; color: #16A34A;">
+                    <i data-lucide="users"></i>
+                </div>
+                <div class="stat-details">
+                    <h3>Customers Today</h3>
+                    <p class="stat-number">34</p>
+                </div>
+                <i data-lucide="chevron-right" class="stat-arrow"></i>
+            </a>
+
+            <a href="active-orders.html" class="stat-card">
+                <div class="stat-icon" style="background: #FFFBEB; color: #D97706;">
+                    <i data-lucide="shopping-bag"></i>
+                </div>
+                <div class="stat-details">
+                    <h3>Active Orders</h3>
+                    <p class="stat-number">18</p>
+                </div>
+                <i data-lucide="chevron-right" class="stat-arrow"></i>
+            </a>
+
+            <a href="for-delivery.html" class="stat-card">
+                <div class="stat-icon" style="background: #F3E8FF; color: #9333EA;">
+                    <i data-lucide="truck"></i>
+                </div>
+                <div class="stat-details">
+                    <h3>For Delivery</h3>
+                    <p class="stat-number">7</p>
+                </div>
+                <i data-lucide="chevron-right" class="stat-arrow"></i>
+            </a>
+        </div>
+
+        <!-- Recent Transactions Table -->
+        <div class="content-card table-container">
+            <div class="table-header">
+                <h2>Recent Transactions & Orders</h2>
+                <button class="view-all-btn" id="viewAllBtn">View All</button>
+            </div>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Name</th>
+                        <th>Mode of Payment</th>
+                        <th>Amount</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="transactionTableBody">
+                    <tr>
+                        <td>Today, 10:24 AM</td>
+                        <td>Maria Santos</td>
+                        <td><span class="badge badge-gcash">GCash</span></td>
+                        <td class="amount">₱450.00</td>
+                        <td>
+                            <button class="action-btn view-btn" title="View Details"><i data-lucide="eye"></i></button>
+                            <button class="action-btn edit-btn" title="Edit Order"><i data-lucide="edit"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Today, 09:15 AM</td>
+                        <td>John Reyes</td>
+                        <td><span class="badge badge-cash">Cash</span></td>
+                        <td class="amount">₱280.00</td>
+                        <td>
+                            <button class="action-btn view-btn" title="View Details"><i data-lucide="eye"></i></button>
+                            <button class="action-btn edit-btn" title="Edit Order"><i data-lucide="edit"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Floating Add Order Button -->
+    <button class="fab-btn" id="openAddOrderModal" title="Add Walk-in Order">
+        <i data-lucide="plus"></i>
+    </button>
+
+    <!-- Modal: Add Walk-in Order -->
+    <div class="modal-overlay" id="addOrderModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>New Walk-in Order</h3>
+                <button class="close-modal-btn" id="closeAddOrderModal">&times;</button>
+            </div>
+            <form id="walkInOrderForm">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="walkInName">Customer Full Name</label>
+                        <input type="text" id="walkInName" placeholder="Enter full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="walkInPhone">Mobile Number</label>
+                        <input type="tel" id="walkInPhone" placeholder="e.g. 09123456789" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="serviceType">Service Offered</label>
+                        <input type="text" id="serviceType" value="Wash, Dry, and Fold" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="weightKg">Total Weight (kg)</label>
+                        <input type="number" id="weightKg" min="1" step="0.5" placeholder="Enter weight in kg" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="paymentMode">Mode of Payment</label>
+                        <select id="paymentMode" required>
+                            <option value="Cash">Cash</option>
+                            <option value="GCash">GCash (Record Keeping Only)</option>
+                        </select>
+                    </div>
+                    <div class="price-preview">
+                        <span>Estimated Total:</span>
+                        <strong id="pricePreviewDisplay">₱0.00</strong>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" id="cancelOrderBtn">Cancel</button>
+                    <button type="submit" class="btn-primary">Save & Record Order</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Generic General Modal -->
+    <div class="modal-overlay" id="actionModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 id="modalTitle">Order Details</h3>
+                <button class="close-modal-btn" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- JavaScript -->
+    <script src="staff-portal.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

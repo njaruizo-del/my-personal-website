@@ -1,0 +1,208 @@
+/* =========================================
+   OVERALL SALES SPECIFIC STYLES
+========================================= */
+
+.page-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-bottom: 8px;
+    transition: color var(--transition);
+}
+
+.back-link i {
+    width: 16px;
+    height: 16px;
+}
+
+.back-link:hover {
+    color: var(--primary-blue);
+}
+
+.header-title-area h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+}
+
+/* Sales Metrics Grid */
+.sales-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.metric-card {
+    background: var(--white);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: var(--radius-medium);
+    padding: 24px;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.02);
+}
+
+.metric-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.metric-value {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.metric-sub {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.metric-sub i {
+    width: 16px;
+    height: 16px;
+}
+
+.text-success {
+    color: #16A34A;
+}
+
+/* Table Filters & Container */
+.table-container {
+    padding: 0;
+    overflow: hidden;
+}
+
+.table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 32px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.table-header h2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.filter-select {
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-small);
+    font-family: inherit;
+    font-size: 13px;
+    color: var(--text-primary);
+    background: var(--white);
+    outline: none;
+    cursor: pointer;
+}
+
+.filter-select:focus {
+    border-color: var(--primary-blue);
+}
+
+/* Table Design */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.data-table th {
+    background: #F8FAFC;
+    padding: 16px 32px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border);
+}
+
+.data-table td {
+    padding: 18px 32px;
+    font-size: 14px;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.data-table tbody tr:hover {
+    background: #FAFAFA;
+}
+
+.data-table .amount {
+    font-weight: 600;
+}
+
+/* Badges */
+.badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.badge-gcash { background: #E0F2FE; color: #0284C7; }
+.badge-cash { background: #F1F5F9; color: #475569; }
+
+/* Export Button Style */
+.btn-primary {
+    height: 40px;
+    padding: 0 18px;
+    border-radius: var(--radius-small);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    background: var(--primary-blue);
+    color: var(--white);
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    transition: all var(--transition);
+}
+
+.btn-primary i {
+    width: 16px;
+    height: 16px;
+}
+
+.btn-primary:hover {
+    background: var(--primary-blue-dark);
+}

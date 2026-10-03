@@ -1,0 +1,129 @@
+/* =========================================
+   CREATE ACCOUNT SPECIFIC STYLES
+========================================= */
+
+.form-container {
+    max-width: 550px;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper input {
+    width: 100%;
+    height: 50px;
+    padding: 0 16px 0 45px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-small);
+    outline: none;
+    background: var(--white);
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text-primary);
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.input-wrapper input::placeholder {
+    color: var(--text-light);
+}
+
+.input-wrapper input:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+.input-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    width: 18px;
+    height: 18px;
+    transform: translateY(-50%);
+    color: var(--text-light);
+    pointer-events: none;
+    transition: color var(--transition);
+}
+
+.input-wrapper:focus-within .input-icon {
+    color: var(--primary-blue);
+}
+
+/* Helper Text Box */
+.helper-text {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 32px;
+    padding: 16px;
+    background: var(--light-blue);
+    border: 1px solid rgba(37, 99, 235, 0.1);
+    border-radius: var(--radius-small);
+    color: var(--primary-blue-dark);
+}
+
+.helper-text i {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.helper-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.helper-content strong {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.helper-content span {
+    font-size: 13px;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+/* Submit Button */
+.submit-btn {
+    width: 100%;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: none;
+    border-radius: var(--radius-small);
+    background: var(--primary-blue);
+    color: var(--white);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.20);
+    transition: background var(--transition), transform var(--transition);
+}
+
+.submit-btn:hover {
+    background: var(--primary-blue-dark);
+    transform: translateY(-1px);
+}
+
+.submit-btn i {
+    width: 20px;
+    height: 20px;
+}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Delivery | Rhajj Laundry</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Base Layout & Specific CSS -->
+    <link rel="stylesheet" href="staff-portal.css">
+    <link rel="stylesheet" href="for-delivery.css">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">
+                <i data-lucide="waves"></i>
+            </div>
+            <span class="brand-name">RHAJJ <span>LAUNDRY</span></span>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="account.html" class="nav-item">
+                <i data-lucide="user"></i>
+                Account
+            </a>
+            <a href="dashboard.html" class="nav-item active">
+                <i data-lucide="layout-dashboard"></i>
+                Dashboard
+            </a>
+            <a href="create-account.html" class="nav-item">
+                <i data-lucide="user-plus"></i>
+                Create Account
+            </a>
+            <a href="statistics.html" class="nav-item">
+                <i data-lucide="bar-chart-3"></i>
+                Statistics
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="settings.html" class="nav-item">
+                <i data-lucide="settings"></i>
+                Settings
+            </a>
+            
+            <div class="staff-profile-container">
+                <div class="staff-profile">
+                    <div class="staff-avatar">RJ</div>
+                    <div class="staff-info">
+                        <span class="staff-name">Rafael Jhon Jevardan</span>
+                        <span class="staff-role">Staff Administrator</span>
+                    </div>
+                </div>
+                <a href="login.html" class="nav-item logout-button" id="logoutButton">
+                    <i data-lucide="log-out"></i>
+                    Logout
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Space -->
+    <main class="main-content">
+        
+        <!-- Mobile Header -->
+        <div class="mobile-header">
+            <button id="mobileMenuBtn" class="mobile-menu-btn">
+                <i data-lucide="menu"></i>
+            </button>
+            <span class="mobile-brand">RHAJJ LAUNDRY</span>
+        </div>
+
+        <!-- Page Header with Back Link -->
+        <div class="page-header-flex">
+            <div class="header-title-area">
+                <a href="dashboard.html" class="back-link"><i data-lucide="arrow-left"></i> Back to Dashboard</a>
+                <h1>Delivery & Dispatch Queue</h1>
+            </div>
+            <div class="delivery-badge">
+                <i data-lucide="truck"></i>
+                <span>7 Orders Ready / Dispatched</span>
+            </div>
+        </div>
+
+        <!-- Delivery Orders Table -->
+        <div class="content-card table-container">
+            <div class="table-header">
+                <h2>Dispatch Tracking</h2>
+                <div class="search-box">
+                    <i data-lucide="search"></i>
+                    <input type="text" id="deliverySearch" placeholder="Search delivery order...">
+                </div>
+            </div>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer Name</th>
+                        <th>Weight</th>
+                        <th>Location (Vigan City Area)</th>
+                        <th>Dispatch Status (Instant)</th>
+                    </tr>
+                </thead>
+                <tbody id="deliveryTableBody">
+                    <tr>
+                        <td>#ORD-4991</td>
+                        <td>John Reyes</td>
+                        <td>4.0 kg</td>
+                        <td>Brgy. VII, Poblacion</td>
+                        <td>
+                            <select class="status-dropdown badge-ready">
+                                <option value="Ready for Dispatch" selected>Ready for Dispatch</option>
+                                <option value="Out for Delivery">Out for Delivery</option>
+                                <option value="Delivered & Completed">Delivered & Completed</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#ORD-4985</td>
+                        <td>Angelica Panganiban</td>
+                        <td>5.5 kg</td>
+                        <td>Brgy. Tamag</td>
+                        <td>
+                            <select class="status-dropdown badge-transit">
+                                <option value="Ready for Dispatch">Ready for Dispatch</option>
+                                <option value="Out for Delivery" selected>Out for Delivery</option>
+                                <option value="Delivered & Completed">Delivered & Completed</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#ORD-4980</td>
+                        <td>Richard Gomez</td>
+                        <td>7.0 kg</td>
+                        <td>Brgy. Bulala</td>
+                        <td>
+                            <select class="status-dropdown badge-ready">
+                                <option value="Ready for Dispatch" selected>Ready for Dispatch</option>
+                                <option value="Out for Delivery">Out for Delivery</option>
+                                <option value="Delivered & Completed">Delivered & Completed</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Mobile Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- JavaScript -->
+    <script src="staff-portal.js"></script>
+    <script src="for-delivery.js"></script>
+</body>
+</html>

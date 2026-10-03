@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account | Rhajj Laundry</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Base Layout & Specific CSS -->
+    <link rel="stylesheet" href="staff-portal.css">
+    <link rel="stylesheet" href="account.css">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">
+                <i data-lucide="waves"></i>
+            </div>
+            <span class="brand-name">RHAJJ <span>LAUNDRY</span></span>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="account.html" class="nav-item active">
+                <i data-lucide="user"></i>
+                Account
+            </a>
+            <a href="dashboard.html" class="nav-item">
+                <i data-lucide="layout-dashboard"></i>
+                Dashboard
+            </a>
+            <a href="create-account.html" class="nav-item">
+                <i data-lucide="user-plus"></i>
+                Create Account
+            </a>
+            <a href="statistics.html" class="nav-item">
+                <i data-lucide="bar-chart-3"></i>
+                Statistics
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="settings.html" class="nav-item">
+                <i data-lucide="settings"></i>
+                Settings
+            </a>
+            
+            <div class="staff-profile-container">
+                <div class="staff-profile">
+                    <div class="staff-avatar">RJ</div>
+                    <div class="staff-info">
+                        <span class="staff-name">Rafael Jhon Jevardan</span>
+                        <span class="staff-role">Staff Administrator</span>
+                    </div>
+                </div>
+                <a href="login.html" class="nav-item logout-button" id="logoutButton">
+                    <i data-lucide="log-out"></i>
+                    Logout
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Space -->
+    <main class="main-content">
+        
+        <!-- Mobile Header -->
+        <div class="mobile-header">
+            <button id="mobileMenuBtn" class="mobile-menu-btn">
+                <i data-lucide="menu"></i>
+            </button>
+            <span class="mobile-brand">RHAJJ LAUNDRY</span>
+        </div>
+
+        <div class="page-header">
+            <h1>Account Settings</h1>
+        </div>
+        
+        <div class="account-layout">
+            
+            <!-- Left Column: Profile Summary & Navigation -->
+            <div class="account-sidebar">
+                <div class="content-card profile-summary-card">
+                    <div class="profile-avatar-large">
+                        RJ
+                        <button class="edit-avatar-btn" id="uploadAvatarBtn" aria-label="Change Avatar">
+                            <i data-lucide="camera"></i>
+                        </button>
+                        <input type="file" id="avatarInput" hidden accept="image/*">
+                    </div>
+                    <h2>Rafael Jhon Jevardan</h2>
+                    <p>Staff Administrator</p>
+                </div>
+            </div>
+
+            <!-- Right Column: Settings Sections -->
+            <div class="account-content">
+                
+                <!-- Section 1: Personal Information -->
+                <div class="content-card">
+                    <h3 class="section-title">Personal Information</h3>
+                    <form id="personalInfoForm" novalidate>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="fullName">Full Name</label>
+                                <div class="input-wrapper">
+                                    <i data-lucide="user" class="input-icon"></i>
+                                    <input type="text" id="fullName" name="fullName" value="Rafael Jhon Jevardan" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <div class="input-wrapper">
+                                    <i data-lucide="mail" class="input-icon"></i>
+                                    <input type="email" id="email" name="email" value="rafael.jhon@rhajjlaundry.com">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <div class="input-wrapper">
+                                    <i data-lucide="phone" class="input-icon"></i>
+                                    <input type="tel" id="phone" name="phone" value="0912 345 6789">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address">Location</label>
+                                <div class="input-wrapper">
+                                    <i data-lucide="map-pin" class="input-icon"></i>
+                                    <input type="text" id="address" name="address" value="Vigan City, Ilocos Sur">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Section 2: Security & Password -->
+                <div class="content-card">
+                    <h3 class="section-title">Security</h3>
+                    <form id="securityForm" novalidate>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="currentPassword">Current Password</label>
+                                <div class="input-wrapper">
+                                    <i data-lucide="lock" class="input-icon"></i>
+                                    <input type="password" id="currentPassword" name="currentPassword" placeholder="Enter current password">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="newPassword">New Password</label>
+                                <div class="input-wrapper">
+                                    <i data-lucide="key" class="input-icon"></i>
+                                    <input type="password" id="newPassword" name="newPassword" placeholder="Enter new password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">Update Password</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Section 3: Notification Preferences -->
+                <div class="content-card">
+                    <h3 class="section-title">Notification Preferences</h3>
+                    <div class="preferences-list">
+                        <div class="preference-item">
+                            <div class="preference-info">
+                                <h4>New Order Alerts</h4>
+                                <p>Receive notifications when a new laundry order is placed.</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="preference-item">
+                            <div class="preference-info">
+                                <h4>Daily Summary</h4>
+                                <p>Receive a daily email summary of statistics and revenue.</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Mobile Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- JavaScript -->
+    <script src="staff-portal.js"></script>
+    <script src="account.js"></script>
+</body>
+</html>
